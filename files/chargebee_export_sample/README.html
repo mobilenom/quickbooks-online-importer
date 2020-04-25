@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Export History</title>
+<style>
+	body{margin:0; padding:0; font-family:sans-serif; font-size:13px; line-height:19px; background:#F3F3F3;}
+	*{box-sizing:border-box;}
+	#header{background:#6F9ABC; display:inline-block; width:100%; margin-bottom:20px; color:white; padding:20px; font-size:22px; color:#fff; font-weight:bold; float:left;}
+	#wrapper{width:650px; margin:20px auto;}
+	.content{width:100%; padding:20px; border:1px solid #CDCDCD; border-top:none; background:#fff;}
+        .cb-highlight{border:1px solid #cce1f6;padding:1% 2%;background-color: #eaf4fd;border-radius: 3px;box-sizing: border-box;-webkit-border-radius: 3px;position: relative;margin: 0 0 5px;}
+	.cb-highlight > p{margin: 0;}
+        table{width:100%; border: 1px solid #E0E0E0; border-spacing:0;}
+	table td{border-bottom: 1px solid #E0E0E0; padding:5px;}
+	table td.label{width:160px;}
+</style>
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="header">Chargebee</div>
+	<div class="content">
+		<h1>Invoices Export</h1>
+                <div class="cb-highlight note"><p>Data in the exported files are <b>comma separated</b> and use the <b>double quote</b> (") character as the delimiter.</p>
+                    <p><b>Note:</b> Not all columns present in the exported files are explained here.</p></div>
+                
+		<h3>Invoices.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Invoice Number</td>
+                        <td>The invoice number. Acts as a identifier for invoice and typically generated sequentially.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Invoice Date</td>
+                        <td>Closing date of the invoice. Typically this is the date on which invoice is generated. If you have "wait & notify to send invoices enabled for usage based billing" this will not be the same as date on which invoice was actually sent to customer.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Start Date</td>
+                        <td>Start date of the invoice.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Status</td>
+                        <td>Current status of this invoice.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Next Retry</td>
+                        <td>Timestamp indicating when will the next attempt to collect payment for this invoice occur.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Recurring</td>
+                        <td>Boolean indicating whether this invoice belongs to a subscription</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Tax Total</td>
+                        <td>Total tax amount for this invoice</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Vat Number</td>
+                        <td>VAT/ Tax registration number of the customer. <a target="_blank" href="https://www.chargebee.com/docs/tax.html#capture-tax-registration-number">Learn more</a></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">PO Number</td>
+                        <td>Purchase Order Number for this invoice</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Amount Due</td>
+                        <td>Total amount to be collected. This includes invoice's payments in progress.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Adjustments</td>
+                        <td>Total adjustments made against this invoice.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Credits Applied</td>
+                        <td>Total credits applied against this invoice.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Payments</td>
+                        <td>Total payments received for this invoice.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Write Off Amount</td>
+                        <td>Amount written off against this invoice.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Net Term Days</td>
+                        <td>Number of days within which the invoice has to be paid</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Due Date</td>
+                        <td>Due date of the invoice</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Dunning Status</td>
+                        <td>Current dunning status of the invoice.</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>Transactions.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Date</td>
+                        <td>Indicates when this transaction occurred.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Payment Method</td>
+                        <td>The Payment Method of this transaction</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Amount</td>
+                        <td>Amount for this transaction.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Status</td>
+                        <td>The status of this transaction.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Authorization Reason</td>
+                        <td>Type of authorization transaction</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Error Code</td>
+                        <td>Error code received from the payment gateway on failure.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Error Text</td>
+                        <td>Error message received from the payment gateway on failure.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Gateway</td>
+                        <td>Gateway through which this transaction was done. Applicable only for 'Card' Payment Method</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Id At Gateway</td>
+                        <td>The id with which this transaction is referred in gateway.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Reference Number</td>
+                        <td>The reference number for this transaction. e.g check number in case of 'check' payments.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Voided At</td>
+                        <td>Timestamp indicating when the payment was voided or authorization expired at gateway.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Amount Unused</td>
+                        <td>Unused amount present for this transaction.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Amount Capturable</td>
+                        <td>Unused authorized/blocked amount for the transaction. Applicable only for Authorization transactions.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">CreditNote Number</td>
+                        <td>Credit-note id.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Reference Authorization Id</td>
+                        <td>Authorization Transaction Id for which the payment transaction was created</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Reference Transaction Id</td>
+                        <td>Payment Transaction Id for which the refund/reversal transaction was created</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Gateway Account Id</td>
+                        <td>Identifier of the gateway</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>Customers.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Email</td>
+                        <td>Email of the customer. Configured email notifications will be sent to this email.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Billing Address Line1</td>
+                        <td>Address line 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Billing Address Line2</td>
+                        <td>Address line 2</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Billing Address City</td>
+                        <td>City</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Billing Address State</td>
+                        <td>State or Province</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Billing Address Country</td>
+                        <td>2-letter ISO 3166 alpha-2 country code.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Billing Address Zip</td>
+                        <td>Zip or Postal code</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Card Status</td>
+                        <td>Current status of the card.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Created At</td>
+                        <td>Timestamp indicating when this customer resource is created.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Billing Address State Code</td>
+                        <td>The ISO 3166-2 state/province code without the country prefix. 
+Currently supported for USA, Canada and India. 
+For instance, for Arizona (USA), set the state_code as AZ (not US-AZ).  
+or, for Tamil Nadu (India), set the state_code as TN (not IN-TN).
+or, for British Columbia (Canada), set the state_code as BC (not CA-BC).
+</br><b>Note:</b> If the 'state_code' is specified, the 'state' attribute should not be provided as Chargebee will set the value automatically (for US, Canada, India).</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Customer Portal Status</td>
+                        <td>Status of the customer portal.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Net Term Days</td>
+                        <td>The number of days within which the customer has to make payment for the invoice</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Taxability</td>
+                        <td>Specifies if the customer is liable for tax</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Locale</td>
+                        <td>Determines which region-specific language Chargebee uses to communicate with the customer. In the absence of the locale attribute, Chargebee will use your site's default language for customer communication.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Billing Address First Name</td>
+                        <td>First name</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Billing Address Last Name</td>
+                        <td>Last name</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Billing Address Email</td>
+                        <td>Email</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Billing Address Company</td>
+                        <td>Company name</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Billing Address Phone</td>
+                        <td>Phone number</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Billing Address Line3</td>
+                        <td>Address line 3</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Billing Address Validation Status</td>
+                        <td>The address verification status.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Is Location Valid</td>
+                        <td>Customer location is validated based on IP address and Card issuing country. If the location is valid, it returns True. If not, it returns False. Applicable only for EU, New Zealand and Australia.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">VAT Number Status</td>
+                        <td>This is only applicable if you have configured EU and Australian taxes and the VAT number validation is enabled.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">VAT Number Validated Time</td>
+                        <td>VAT number recently got validated time</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>Cards.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">First Name</td>
+                        <td>Cardholder's first name</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Last Name</td>
+                        <td>Cardholder's last name</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Card Type</td>
+                        <td>Card type</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Last4</td>
+                        <td>Last four digits of the card number</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Expiry Month</td>
+                        <td>Card expiry month.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Expiry Year</td>
+                        <td>Card expiry year.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Address Line1</td>
+                        <td>Address line 1, as available in card billing address.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Address Line2</td>
+                        <td>Address line 2, as available in card billing address.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Address City</td>
+                        <td>City, as available in card billing address.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Address State</td>
+                        <td>The state/province name.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Address Country</td>
+                        <td>2-letter ISO 3166 alpha-2 country code.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Address Zip</td>
+                        <td>Postal or Zip code, as available in card billing address.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Status</td>
+                        <td>Current status of the card.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Address State Code</td>
+                        <td>The ISO 3166-2 state/province code without the country prefix. 
+Currently supported for USA, Canada and India. 
+For instance, for Arizona (USA), set the state_code as AZ (not US-AZ).  
+or, for Tamil Nadu (India), set the state_code as TN (not IN-TN).
+or, for British Columbia (Canada), set the state_code as BC (not CA-BC).
+</br><b>Note:</b> If the 'state_code' is specified, the 'state' attribute should not be provided as Chargebee will set the value automatically (for US, Canada, India).</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>Subscriptions.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Plan Id</td>
+                        <td>A unique ID for your system to identify the plan.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Plan Quantity</td>
+                        <td>Represents the plan quantity for this subscription.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Status</td>
+                        <td>Current state of the subscription</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Start Date</td>
+                        <td>Applicable only for 'future' subscriptions. The scheduled start time of the 'future' subscription.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Trial Start</td>
+                        <td>Start of the trial period for the subscription. Presence of this value for 'future' subscription implies the subscription will go into 'trial' state when it starts.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Trial End</td>
+                        <td>End of the trial period for the subscription. Presence of this value for 'future' subscription implies the subscription will go into 'trial' state when it starts.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Curr Term Start</td>
+                        <td>Start of the current billing term.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Curr Term End</td>
+                        <td>End of the current billing term. Subscription is renewed immediately after this</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Next Billing</td>
+                        <td>Date on which the next billing happens.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Remaining Billing Cycles</td>
+                        <td><ul><li>When the subscription is on a <a href="https://apidocs.chargebee.com/docs/api/contract_terms">contract term</a>: this value is the number of billing cycles remaining in the contract term after the current billing cycle.</li><li>When the subscription is not on a contract term: this value is the number of billing cycles remaining after the current cycle, at the end of which, the subscription cancels.</li></ul></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Created At</td>
+                        <td>Subscription created time</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Started At</td>
+                        <td>Time at which the subscription got started. Will be null for 'future' subscriptions as it is yet to be started.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Activated At</td>
+                        <td>Time at which the subscription moved from <b>in_trial</b> state to <b>active</b> state</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Cancelled At</td>
+                        <td>Time at which subscription was cancelled or is set to be cancelled.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Cancel Reason</td>
+                        <td>Possible reason the subscription might be cancelled.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Next Billing Amount</td>
+                        <td>Total invoice amount to be paid upon next renewal.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">PO Number</td>
+                        <td>Purchase Order Number for this subscription</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">MRR</td>
+                        <td>Monthly Recurring Revenue</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Subscription Plan Unit Price</td>
+                        <td>Amount that will override the Plan's default price.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Subscription Setup Fee</td>
+                        <td>Amount that will override the default setup fee.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Subscription Pause Date</td>
+                        <td>Date on which the subscription will be paused.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Subscriptions Resume Date</td>
+                        <td>Date on which the subscription will be resumed.</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>SubscriptionAddons.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Addon Id</td>
+                        <td>A unique ID for your system to identify the addon.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Addon Quantity</td>
+                        <td>Addon quantity. Applicable only for the quantity based addons. Should be passed with the same index as that of associated addon id.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Addon Unit Price</td>
+                        <td>Amount that will override the Addon's default price. The Plan's billing frequency will not be considered for overriding. E.g. If the Plan's billing frequency is every 3 months, and if the price override amount is $10, $10 will be used, and not $30 (i.e $10*3).</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>SubscriptionCoupons.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Coupon Id</td>
+                        <td>Used to uniquely identify the coupon in your website/application and to integrate with Chargebee.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Coupon Code Id</td>
+                        <td>Unique coupon code that can be redeemed only once.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Redemptions</td>
+                        <td>The number of times this coupon has been redeemed.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Apply Till</td>
+                        <td>The date till the coupon is to be applied. Applicable for "limited months" coupons</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>SubscriptionAddresses.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Email</td>
+                        <td>Email</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Company</td>
+                        <td>Company name</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Phone</td>
+                        <td>Phone number</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Address Line1</td>
+                        <td>Address line 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Address Line2</td>
+                        <td>Address line 2</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Address Line3</td>
+                        <td>Address line 3</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">City</td>
+                        <td>City</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">State</td>
+                        <td>State or Province</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Country</td>
+                        <td>2-letter ISO 3166 alpha-2 country code.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Zip</td>
+                        <td>Zip or Postal code</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">State Code</td>
+                        <td>The ISO 3166-2 state/province code without the country prefix. 
+Currently supported for USA, Canada and India. 
+For instance, for Arizona (USA), set the state_code as AZ (not US-AZ).  
+or, for Tamil Nadu (India), set the state_code as TN (not IN-TN).
+or, for British Columbia (Canada), set the state_code as BC (not CA-BC).
+</br><b>Note:</b> If the 'state_code' is specified, the 'state' attribute should not be provided as Chargebee will set the value automatically (for US, Canada, India).</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>LineItems.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Invoice Number</td>
+                        <td>The invoice number. Acts as a identifier for invoice and typically generated sequentially.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Type</td>
+                        <td>Type of this lineitem. This along with 'entity_type' and 'entity_id' attributes consitutes the meta information of this lineitem.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Entity Type</td>
+                        <td>Specifies the modelled entity (plan / addon / coupon / tax / adhoc) this lineitem is based on.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Entity Id</td>
+                        <td>The identifier of the modelled entity this lineitem is based on. Will be null for 'adhoc' entity type.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Date From</td>
+                        <td>Start date of this lineitem.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Date To</td>
+                        <td>End date of this lineitem.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Unit Amount</td>
+                        <td>Unit amount of the lineitem.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Quantity</td>
+                        <td>Quantity of the recurring item which is represented by this lineitem</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Amount</td>
+                        <td>Total amount of this lineitem. Typically equals to unit amount x quantity</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Tax</td>
+                        <td>The tax amount charged for this item</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Tax Rate</td>
+                        <td>Rate of tax used to calculate tax for this lineitem</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Invoice Status</td>
+                        <td>Current status of this invoice.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Customer Id</td>
+                        <td>Identifier of the customer.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Subscription Id</td>
+                        <td>A unique identifier to identify the subscription. You will use this to perform all operations on this subscription.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Pricing Model</td>
+                        <td>Charges a single price for the plan/addon</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>LineItemTiers.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Line Item Id</td>
+                        <td>Uniquely identifies a line_item</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Invoice Number</td>
+                        <td>The invoice number. Acts as a identifier for invoice and typically generated sequentially.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Starting Unit</td>
+                        <td>The lower limit of a range of units for the tier</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Ending Unit</td>
+                        <td>The upper limit of a range of units for the tier</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Quantity Used</td>
+                        <td>The number of units purchased in a range.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Unit Amount</td>
+                        <td>The price of the tier if the charge model is a stairtstep pricing , or the price of each unit in the tier if the charge model is tiered/volume pricing.</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>InvoiceProperties.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Invoice Number</td>
+                        <td>The invoice number. Acts as a identifier for invoice and typically generated sequentially.</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>AppliedCreditNotes.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Invoice Number</td>
+                        <td>The invoice number. Acts as a identifier for invoice and typically generated sequentially.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Credit Note Number</td>
+                        <td>Credit-note id.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Status</td>
+                        <td>The credit note status.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Type</td>
+                        <td>The credit note type.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Reason Code</td>
+                        <td>The reason for issuing this Credit Note. The following reason codes are supported now</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Date</td>
+                        <td>The date the Credit Note is issued.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Vat Number</td>
+                        <td>VAT number of the customer for whom this Credit Note is raised.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Price Type</td>
+                        <td>The price type of the Credit Note.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Total</td>
+                        <td>Credit Note amount in cents.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Amount Allocated</td>
+                        <td>The amount allocated to the invoices.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Amount Refunded</td>
+                        <td>The refunds issued from this Credit Note.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Amount Available</td>
+                        <td>The yet to be used credits of this Credit Note.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Tax Total</td>
+                        <td>Total tax amount for this credit note</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>IssuedCreditNotes.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Invoice Number</td>
+                        <td>The invoice number. Acts as a identifier for invoice and typically generated sequentially.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Credit Note Number</td>
+                        <td>Credit-note id.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Status</td>
+                        <td>The credit note status.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Type</td>
+                        <td>The credit note type.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Reason Code</td>
+                        <td>The reason for issuing this Credit Note. The following reason codes are supported now</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Date</td>
+                        <td>The date the Credit Note is issued.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Vat Number</td>
+                        <td>VAT number of the customer for whom this Credit Note is raised.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Price Type</td>
+                        <td>The price type of the Credit Note.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Total</td>
+                        <td>Credit Note amount in cents.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Amount Allocated</td>
+                        <td>The amount allocated to the invoices.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Amount Refunded</td>
+                        <td>The refunds issued from this Credit Note.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Amount Available</td>
+                        <td>The yet to be used credits of this Credit Note.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Tax Total</td>
+                        <td>Total tax amount for this credit note</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>AdjustmentCreditNotes.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Invoice Number</td>
+                        <td>The invoice number. Acts as a identifier for invoice and typically generated sequentially.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Credit Note Number</td>
+                        <td>Credit-note id.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Status</td>
+                        <td>The credit note status.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Type</td>
+                        <td>The credit note type.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Reason Code</td>
+                        <td>The reason for issuing this Credit Note. The following reason codes are supported now</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Date</td>
+                        <td>The date the Credit Note is issued.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Vat Number</td>
+                        <td>VAT number of the customer for whom this Credit Note is raised.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Price Type</td>
+                        <td>The price type of the Credit Note.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Total</td>
+                        <td>Credit Note amount in cents.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Amount Allocated</td>
+                        <td>The amount allocated to the invoices.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Amount Refunded</td>
+                        <td>The refunds issued from this Credit Note.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Amount Available</td>
+                        <td>The yet to be used credits of this Credit Note.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Tax Total</td>
+                        <td>Total tax amount for this credit note</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>InvoiceComments.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Invoice Number</td>
+                        <td>The invoice number. Acts as a identifier for invoice and typically generated sequentially.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Customer Id</td>
+                        <td>Identifier of the customer.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Subscription Id</td>
+                        <td>A unique identifier to identify the subscription. You will use this to perform all operations on this subscription.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Invoice Date</td>
+                        <td>Closing date of the invoice. Typically this is the date on which invoice is generated. If you have "wait & notify to send invoices enabled for usage based billing" this will not be the same as date on which invoice was actually sent to customer.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Status</td>
+                        <td>Current status of this invoice.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Comment Id</td>
+                        <td>Unique identifier for the comment.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Notes</td>
+                        <td>Actual notes for the comment.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Type</td>
+                        <td>Type of comment this is.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Created At</td>
+                        <td>The time at which this comment was created</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Added By</td>
+                        <td>The user who created the comment. If created via API, this contains the name given for the API key used.</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>Plans.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Plan Id</td>
+                        <td>A unique ID for your system to identify the plan.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Name</td>
+                        <td>The display name used in web interface for identifying the plan.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Invoice Name</td>
+                        <td>Display name used in invoice. If it is not configured then name is used in invoice.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Price</td>
+                        <td>The price of the plan</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Period</td>
+                        <td>Defines billing frequency. Example: to bill customer every 3 months, provide "3" here.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Period Unit</td>
+                        <td>Defines billing frequency in association with billing period.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Trial Period</td>
+                        <td>The free time window for your customer to try your product</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Trial Period Unit</td>
+                        <td>Time unit for the trial period.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Setup Cost</td>
+                        <td>One-time setup fee charged as part of the first invoice.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Free Quantity</td>
+                        <td>Free quantity the subscriptions of this plan will have. Only the quantity more than this will be charged for the subscription.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Billing Cycles</td>
+                        <td>The number of billing cycles the subscription is active. The subscription is moved to non renewing state and then to cancelled state automatically</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Redirect Url</td>
+                        <td>The url to redirect on successful checkout. Eg: https://yoursite.com/success.html?plan=basic</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Status</td>
+                        <td>The plan state</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Archived At</td>
+                        <td>Time at which the plan was moved to archived status.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Downgrade Penality</td>
+                        <td>Penalty charge is calculated by % entered with the actual value of the plan for the duration used.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Charge Model</td>
+                        <td>Defines how the subscription recurring charge for this plan should be calculated.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Description</td>
+                        <td>Description about the plan to show in the hosted pages & customer portal.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">SKU</td>
+                        <td>The field is used as Product name/code in your third party accounting application. Chargebee will use it as an alternate name in your accounting application.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Accounting Code</td>
+                        <td>This field is to capture the Account code setup in your Accounting system for integration purposes only.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Accounting Category1</td>
+                        <td>The name of the category of your product in Xero. If you've integrated with QuickBooks, this will be the "Class". Use the format "&#60;Category&#62;:&#60Name&#62;". E.g. "Region: North".</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Accounting Category2</td>
+                        <td>The name of the category of your product in Xero. Use the format&#60;Category&#62;:&#60Name&#62;". E.g. "Region: North"</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>Addons.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Addon Id</td>
+                        <td>A unique ID for your system to identify the addon.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Name</td>
+                        <td>The display name used in web interface for identifying the addon.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Invoice Name</td>
+                        <td>Display name used in invoice. If it is not configured then name is used in invoice.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Type</td>
+                        <td>Select "On-Off" to charge a flat fee or "Quantity" for unit based charges.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Charge Type</td>
+                        <td>Type of charge</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Price</td>
+                        <td>Addon price is calculated based on the addon type and charge type. <a href="https://www.chargebee.com/docs/addons.html#charge-type-and-pricing" target="blank">Learn more</a>.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Period</td>
+                        <td>Applicable only for recurring-addons. Along with 'period_unit' decides the term-price of this addon.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Period Unit</td>
+                        <td>Applicable only for recurring-addons. Along with 'period' decides the term-price of this addon</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Unit</td>
+                        <td>Specifies the type of quantity. For example, if addon price is $10 and "agent" is the unit of measure, it will be displayed as "$10/agent". <br/>Applicable only for quantity type addons.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Status</td>
+                        <td>Status of the addon</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Archived At</td>
+                        <td>Time at which the plan was moved to archived status.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Description</td>
+                        <td>Description about the addon to show in the hosted pages & customer portal.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">SKU</td>
+                        <td>The field is used as Product name/code in your third party accounting application. Chargebee will use it as an alternate name in your accounting application.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Accounting Code</td>
+                        <td>This field is to capture the Account code setup in your Accounting system for integration purposes only.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Accounting Category1</td>
+                        <td>The name of the category of your product in Xero. If you've integrated with QuickBooks, this will be the "Class". Use the format "&#60;Category&#62;:&#60Name&#62;". E.g. "Region: North".</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Accounting Category2</td>
+                        <td>The name of the category of your product in Xero. Use the format&#60;Category&#62;:&#60Name&#62;". E.g. "Region: North"</td>
+                    </tr>
+                    
+                </table>
+                
+                
+		<h3>Coupons.csv</h3>
+                <table>
+                    
+                    <tr>
+                        <td class="label">Coupon Id</td>
+                        <td>Used to uniquely identify the coupon in your website/application and to integrate with Chargebee.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Name</td>
+                        <td>The display name used in web interface for identifying the coupon.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Invoice Name</td>
+                        <td>Display name used in invoice. If it is not configured then name is used in invoice.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Discount Type</td>
+                        <td>The type of discount</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Discount Percentage</td>
+                        <td>Discount value in percentage.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Discount Quantity</td>
+                        <td>Number of offered quantity for discount.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Duration Type</td>
+                        <td>Specifies the time duration this coupon is applicable.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Duration Month</td>
+                        <td>The duration in months for the coupon to be applied. Applicable only to limited period coupon</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Max Redemptions</td>
+                        <td>Maximum number of times this coupon can be redeemed.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Valid Till</td>
+                        <td>Date upto which the coupon can be applied to new subscriptions.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Redemptions</td>
+                        <td>The number of times this coupon has been redeemed.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Status</td>
+                        <td>Status of the coupon.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Archived At</td>
+                        <td>Timestamp indicating when this coupon was archived.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Created At</td>
+                        <td>Timestamp indicating when this coupon is created.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Apply On</td>
+                        <td>The invoice items for which this discounts need to be applied</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Plan Constraint</td>
+                        <td>Plans the coupon can be applied to.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="label">Addon Constraint</td>
+                        <td>Addons the coupon can be applied to.</td>
+                    </tr>
+                    
+                </table>
+                
+                
+	</div>
+</div>
+</body>
+</html>

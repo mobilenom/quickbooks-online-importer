@@ -1,0 +1,2 @@
+Sales Receipt No,Customer ,Sales Receipt Date,Deposit To,Payment Method,Billing Address Line 1,Shipping Address Line 1,Memo,Message displayed on sales receipt,Email,Product/Service,Product/Service Description,Product/Service Quantity,Product/Service Rate,Product/Service Amount,Product/Service Taxable
+1,Travis Waldron,12/23/15,Checking,Master Card,P.O. Box 5,P.O. Box 5,My Memo,Thanks for your business!,name@email.com,Sprinkler Pipes,Description 1,3,5,15,TRUE

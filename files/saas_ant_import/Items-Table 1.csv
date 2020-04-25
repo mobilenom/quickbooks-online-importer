@@ -1,0 +1,3 @@
+Name,Type,SKU,Price/Rate,Sales Description,Taxable,Purchase Description,Cost,Income Account ,Expense Account ,Category,Inventory Asset Account,Initial Quantity On Hand,As Of Date,Sales Tax Included,Purchase Tax Included
+Lighting,NonInventory,Item1,15,,TRUE,,10,Sales,Purchases,,,,,TRUE,TRUE
+Pump,Inventory,Item2,25,,FALSE,,0,Sales,Cost Of Goods Sold,,Inventory,20,12/10/15,FALSE,FALSE

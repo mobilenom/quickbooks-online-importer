@@ -1,0 +1,7 @@
+Journal No,Journal Date,Memo, Account , Amount, Description,Name,Location,Class ,Currency Code,Exchange Rate,Is Adjustment
+1,12/23/15,My Memo,Checking,10,Description 1,Customer 1,Location A,Class 1,,,TRUE
+1,,,Checking,10,Description 2,Customer 2,,Class 2,,,
+1,,,Checking,-10,Description 3,Vendor 1,,Class 3,,,
+1,,,Checking,-10,Description 4,Vendor 2,Location A,Class 4,,,
+2,12/23/15,,Credit Card,20,,Employee 1,,Class 5,,,FALSE
+2,,,Credit Card,-20,,Employee 2,,Class 6,,,

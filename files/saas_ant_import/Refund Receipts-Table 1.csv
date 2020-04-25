@@ -1,0 +1,2 @@
+Refund Receipt No,Customer ,Refund Receipt date,Refunded From,Payment method,Billing Address Line 1,Memo,Message displayed on refund receipt,Email,Product/Service,Product/Service Description,Product/Service Quantity,Product/Service Rate,Product/Service Amount,Product/Service Taxable
+1,Travis Waldron,12/23/15,Checking,Check,P.O. Box 5,My Memo,Thanks for your business!,name@email.com,Sprinkler Pipes,Description 1,3,5,15,TRUE
